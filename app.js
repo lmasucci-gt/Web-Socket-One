@@ -4,8 +4,6 @@ import productosRouter from "./src/routes/productos.routes.js";
 import handlebars from "express-handlebars";
 const app = Express();
 
-app.use(Express.json());
-
 /* Configuracion motor de plantillas */
 app.engine(
     "hbs",
@@ -18,6 +16,8 @@ app.engine(
 
 app.set("views", "./views"); // especifica el directorio de vistas
 app.set("view engine", "hbs"); // registra el motor de plantillas
+
+app.use(Express.json());
 
 app.get("/", (_, res) => {
 	return res.json({ message: "Bienvenido al root" });

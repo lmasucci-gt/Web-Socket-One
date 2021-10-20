@@ -1,14 +1,20 @@
+import fs from 'fs'
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+
 export class File{
-    fs = require('fs');
     constructor(file){
         this.file = `${__dirname}/${file}`
     }
 
-     read(){
+    async read(){
         try{
-            const productos = this.fs.readFileSync(this.file, 'utf-8');
+            const productos = fs.readFileSync(this.file, 'utf-8');
             return JSON.parse(productos);
         } catch (err){
+            console.log(err);
             return [];
         }
     }
@@ -22,6 +28,7 @@ export class File{
             return producto;
         }
         catch (err){
+            console.log(err);
             return err;
         }
     }
@@ -37,6 +44,7 @@ export class File{
             return "El producto se actualizo correctamente";
         }
         catch (err){
+            console.log(err);
             return err;
         }
     }
@@ -51,9 +59,10 @@ export class File{
             return producto;
         }
         catch (err){
+            console.log(err);
             return err;
         } 
     }
 }
 
-//module.exports = new File('productos.txt');
+export default new File('productos.txt');
