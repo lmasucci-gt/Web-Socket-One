@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+
+    <div class="containerStyle">
+
+        <!-- Seccion para agregar productos -->
+        <div class="containerForm">
+            <form class="formContainer" method="POST" action="/api/productos/guardar">
+                <div>
+                    <label>Title: </label>
+                    <input name="title" type="text">
+                </div>
+                <div>
+                    <label>Price: </label>
+                    <input name="price" type="number">
+                </div>
+                <div>
+                    <label class="form-label">Thumbnail: </label>
+                    <input name="thumbnail" type="text">
+                </div>
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+
+        <!-- Seccion para listar productos -->
+        <div class="containerList">
+            <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Thumbnail</th>
+                    </tr>
+                <tbody>
+                    {{#each listProductos}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.thumbnail}}</td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+                </thead>
+            </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

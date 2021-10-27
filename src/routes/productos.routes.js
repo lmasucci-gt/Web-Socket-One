@@ -8,9 +8,7 @@ import {
 
 const productosRouter = Router();
 
-productosRouter.get("/", (req, res) => {
-	res.render('index.hbs', getProductos)
-});
+productosRouter.get("/", getProductos);
 productosRouter.post("/", agregarProducto);
 productosRouter.put("/:id", actualizarProducto);
 productosRouter.delete("/:id", borrarProducto);

@@ -1,7 +1,6 @@
 import { Productos } from "../models/productos.js";
 import archivo from '../models/archivo.js'
 
-
 export const getProductos = async (req, res) => {
   try {
     const listaProductos = await archivo.read();
@@ -11,9 +10,7 @@ export const getProductos = async (req, res) => {
     // if (id) {
     //   listaParseada.find((p) => p.id == id);
     // }
-    return {
-      listProductos: listaProductos,
-    };
+    res.render('index.hbs', {listProductos: listaProductos})
   } catch (error) {
     console.log(error);
   }
