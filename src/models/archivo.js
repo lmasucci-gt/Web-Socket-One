@@ -8,8 +8,8 @@ export class File{
     constructor(file){
         this.file = `${__dirname}/${file}`
     }
-
-    async read(){
+    //TODO: Volver a poner asincronia a esto
+    read(){
         try{
             const productos = fs.readFileSync(this.file, 'utf-8');
             return JSON.parse(productos);
@@ -18,13 +18,13 @@ export class File{
             return [];
         }
     }
-
-    async create(producto){
-        const productos = await this.read();
+    //TODO: Volver a poner asincronia a esto
+    create(producto){
+        const productos = this.read();
         producto.id = productos.length + 1;
         productos.push(producto);
         try{
-            await this.fs.promises.writeFile(this.file, JSON.stringify(productos, null, '\t'));
+            fs.writeFile(this.file, JSON.stringify(productos, null, '\t'));
             return producto;
         }
         catch (err){

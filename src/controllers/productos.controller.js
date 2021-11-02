@@ -4,6 +4,7 @@ import archivo from '../models/archivo.js'
 export const getProductos = async (req, res) => {
   try {
     const listaProductos = await archivo.read();
+    console.log(listaProductos);
     //console.log(listaProductos)
     //const listaParseada = listaProductos.json();
     //const { id } = req.params;
